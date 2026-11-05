@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoPulse | Build More, Waste Less</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🌱 EcoPulse</h1>
+    <p>Build More. Waste Less.</p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Small actions. Big impact.</h2>
+      <p>Track food waste, water and electricity. Try the EcoCity challenge!</p>
+    </section>
+
+    <section class="cards">
+      <div class="card"><span>⚡</span><h3>Electricity</h3><strong id="powerTotal">0</strong><p>kWh recorded</p></div>
+      <div class="card"><span>💧</span><h3>Water</h3><strong id="waterTotal">0</strong><p>litres recorded</p></div>
+      <div class="card"><span>🍎</span><h3>Food Waste</h3><strong id="foodTotal">0</strong><p>kg recorded</p></div>
+    </section>
+
+    <section class="panel">
+      <h2>📊 Resource Tracker</h2>
+      <p>Enter how much you used or wasted. The totals are not measured savings.</p>
+      <form id="trackerForm">
+        <label for="resource">Choose resource</label>
+        <select id="resource">
+          <option value="power">Electricity (kWh)</option>
+          <option value="water">Water (litres)</option>
+          <option value="food">Food waste (kg)</option>
+        </select>
+        <label for="amount">Amount</label>
+        <input id="amount" type="number" min="0.01" step="any" max="100000" placeholder="Enter a number" required>
+        <button type="submit">Add Entry +</button>
+      </form>
+      <p id="message" role="status"></p>
+      <button id="reset" class="outline">Reset Totals</button>
+    </section>
+
+    <section class="panel">
+      <h2>🎮 EcoCity Mini Game</h2>
+      <p id="question">Your school wastes electricity. What should you do?</p>
+      <div id="answers">
+        <button onclick="answer(true)">Use LED lights and switch off unused devices</button>
+        <button onclick="answer(false)">Leave everything switched on</button>
+      </div>
+      <p id="result" role="status"></p>
+      <h3>EcoScore: <span id="score">0</span> 🌟</h3>
+      <button id="next" class="outline" onclick="nextQuestion()" hidden>Next Challenge →</button>
+    </section>
+
+    <section class="panel goals">
+      <h2>🌍 Our Sustainable Development Goals</h2>
+      <p><b>SDG 12</b> — Responsible Consumption and Production</p>
+      <p><b>SDG 6</b> — Clean Water and Sanitation</p>
+      <p><b>SDG 7</b> — Affordable and Clean Energy</p>
+      <p><b>SDG 13</b> — Climate Action</p>
+    </section>
+  </main>
+  <footer>Made for a greener tomorrow 🌿 · EcoPulse</footer>
+  <script src="script.js"></script>
+</body>
+</html>

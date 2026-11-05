@@ -1,0 +1,32 @@
+/* EcoPulse: simple green theme */
+* { box-sizing: border-box; }
+body { margin: 0; background: #f0f7f1; color: #193b2d; font-family: Arial, sans-serif; }
+header { background: #124b35; color: white; padding: 25px; text-align: center; }
+header h1 { margin: 0; font-size: 34px; }
+header p { margin-bottom: 0; color: #c6edcf; }
+main { max-width: 920px; margin: auto; padding: 22px; }
+.intro { text-align: center; padding: 24px 0; }
+.intro h2 { font-size: 30px; margin-bottom: 8px; }
+.intro p, .panel > p { color: #557464; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.card, .panel { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px #124b3514; }
+.card { text-align: center; }
+.card span { font-size: 34px; }
+.card h3 { margin: 12px 0; }
+.card strong { font-size: 32px; color: #178654; }
+.card p { font-size: 13px; color: #658374; }
+.panel { margin-top: 20px; }
+.panel h2 { margin-top: 0; }
+form { display: grid; gap: 10px; }
+label { font-weight: bold; margin-top: 6px; }
+input, select { padding: 12px; border: 1px solid #b9d2c2; border-radius: 8px; font-size: 16px; }
+button { background: #178654; color: white; padding: 12px 17px; border: 0; border-radius: 9px; cursor: pointer; font-weight: bold; margin: 5px 0; }
+button:hover { background: #106b43; }
+button:focus-visible { outline: 3px solid #f5bd47; outline-offset: 2px; }
+.outline { background: #e3f3e9; color: #125c3a; }
+.outline:hover { background: #cbe8d6; }
+#answers { display: grid; gap: 8px; }
+#result, #message { color: #137747; font-weight: bold; min-height: 20px; }
+.goals p { background: #edf7f0; padding: 10px; border-radius: 8px; }
+footer { background: #124b35; color: white; text-align: center; padding: 20px; margin-top: 25px; }
+@media (max-width: 600px) { .cards { grid-template-columns: 1fr; } main { padding: 12px; } }
