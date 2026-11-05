@@ -1,68 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EcoPulse | Build More, Waste Less</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>🌱 EcoPulse</h1>
-    <p>Build More. Waste Less.</p>
-  </header>
-
-  <main>
-    <section class="intro">
-      <h2>Small actions. Big impact.</h2>
-      <p>Track food waste, water and electricity. Try the EcoCity challenge!</p>
-    </section>
-
-    <section class="cards">
-      <div class="card"><span>⚡</span><h3>Electricity</h3><strong id="powerTotal">0</strong><p>kWh recorded</p></div>
-      <div class="card"><span>💧</span><h3>Water</h3><strong id="waterTotal">0</strong><p>litres recorded</p></div>
-      <div class="card"><span>🍎</span><h3>Food Waste</h3><strong id="foodTotal">0</strong><p>kg recorded</p></div>
-    </section>
-
-    <section class="panel">
-      <h2>📊 Resource Tracker</h2>
-      <p>Enter how much you used or wasted. The totals are not measured savings.</p>
-      <form id="trackerForm">
-        <label for="resource">Choose resource</label>
-        <select id="resource">
-          <option value="power">Electricity (kWh)</option>
-          <option value="water">Water (litres)</option>
-          <option value="food">Food waste (kg)</option>
-        </select>
-        <label for="amount">Amount</label>
-        <input id="amount" type="number" min="0.01" step="any" max="100000" placeholder="Enter a number" required>
-        <button type="submit">Add Entry +</button>
-      </form>
-      <p id="message" role="status"></p>
-      <button id="reset" class="outline">Reset Totals</button>
-    </section>
-
-    <section class="panel">
-      <h2>🎮 EcoCity Mini Game</h2>
-      <p id="question">Your school wastes electricity. What should you do?</p>
-      <div id="answers">
-        <button onclick="answer(true)">Use LED lights and switch off unused devices</button>
-        <button onclick="answer(false)">Leave everything switched on</button>
-      </div>
-      <p id="result" role="status"></p>
-      <h3>EcoScore: <span id="score">0</span> 🌟</h3>
-      <button id="next" class="outline" onclick="nextQuestion()" hidden>Next Challenge →</button>
-    </section>
-
-    <section class="panel goals">
-      <h2>🌍 Our Sustainable Development Goals</h2>
-      <p><b>SDG 12</b> — Responsible Consumption and Production</p>
-      <p><b>SDG 6</b> — Clean Water and Sanitation</p>
-      <p><b>SDG 7</b> — Affordable and Clean Energy</p>
-      <p><b>SDG 13</b> — Climate Action</p>
-    </section>
-  </main>
-  <footer>Made for a greener tomorrow 🌿 · EcoPulse</footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081b19"><meta name="description" content="EcoPulse — track resources, build sustainable habits, and play EcoCity.">
+<title>EcoPulse | Build More. Waste Less.</title><link rel="stylesheet" href="style.css"></head>
+<body><div class="shell">
+<aside class="sidebar"><div class="brand"><span class="brand-icon">✳</span><div>Eco<span>Pulse</span><small>BUILD MORE · WASTE LESS</small></div></div>
+<nav aria-label="Main navigation">
+<button class="nav active" data-view="dashboard">◫ &nbsp; Dashboard</button>
+<button class="nav" data-view="tracker">◉ &nbsp; Resource tracker</button>
+<button class="nav" data-view="city">▦ &nbsp; EcoCity simulator</button>
+<button class="nav" data-view="rewards">◈ &nbsp; EcoRewards wallet</button>
+<button class="nav" data-view="quests">✦ &nbsp; EcoQuests</button>
+<button class="nav" data-view="about">ⓘ &nbsp; About the project</button>
+</nav><div class="sidebar-foot"><div class="live-dot"></div> OFFLINE READY<br><small>Your data stays in this browser</small></div></aside>
+<main class="main"><header class="topbar"><div><span class="eyebrow">SUSTAINABILITY CONTROL CENTER</span><h1 id="page-title">Your impact, visualized.</h1></div><span class="top-pill">🌱 SDG 6 · 7 · 12 · 13</span></header>
+<section id="dashboard" class="view active"><div class="hero"><div><span class="eyebrow light">WELCOME TO ECOPULSE</span><h2>Small actions.<br><em>Extraordinary impact.</em></h2><p>Measure what you use. Rethink what you waste. Make smarter choices, one day at a time.</p><button class="primary" data-go="tracker">+ Log resource use →</button></div><div class="hero-art"><div class="planet">🌍</div><div class="orbit o1"></div><div class="orbit o2"></div></div></div>
+<div class="demo-toolbar"><span>Explore the full website with example readings</span><button class="secondary" id="demo-load">Load demo data</button><button class="text-button" id="demo-clear">Clear demo</button></div><div class="stats"><article class="stat"><span>⚡ ELECTRICITY LOGGED</span><strong id="energy-total">0 <small>kWh</small></strong><p>From your entries</p></article><article class="stat"><span>💧 WATER LOGGED</span><strong id="water-total">0 <small>L</small></strong><p>From your entries</p></article><article class="stat"><span>🥗 FOOD WASTE LOGGED</span><strong id="food-total">0 <small>kg</small></strong><p>From your entries</p></article><article class="stat accent"><span>✦ ECOPOINTS</span><strong id="points-total">0</strong><p>Earned from completed quests</p></article></div>
+<div class="two-col"><article class="panel"><div class="panel-head"><h3>Resource log overview</h3><span>Recent entries</span></div><div class="chart-controls"><label for="chart-resource">Show</label><select id="chart-resource"><option value="energy">Electricity (kWh)</option><option value="water">Water (L)</option><option value="food">Food waste (kg)</option></select></div><div id="line-chart" class="line-chart" role="img" aria-label="Resource usage chart"></div><p class="muted tiny">Daily totals for the past seven days. These are recorded amounts, not verified savings.</p></article><article class="panel"><div class="panel-head"><h3>Your latest activity</h3><button class="text-button" data-go="tracker">Add entry ↗</button></div><div id="recent-list" class="activity"></div></article></div><article class="panel comparison"><div class="panel-head"><h3>Weekly progress against your baseline</h3><span>Last 7 days vs previous 7 days</span></div><div id="comparison-list"></div></article></section>
+<section id="tracker" class="view"><div class="section-intro"><h2>Every drop. Every watt. Every bite.</h2><p>Enter measured or estimated usage. A log is not automatically a saving: meaningful savings require a baseline for comparison.</p></div>
+<div class="two-col"><article class="panel"><h3>Log resource usage</h3><form id="log-form"><label for="resource">Resource</label><select id="resource" required><option value="energy">⚡ Electricity (kWh)</option><option value="water">💧 Water (litres)</option><option value="food">🥗 Food wasted (kg)</option></select><label for="amount">Amount</label><input id="amount" type="number" min="0.01" max="100000" step="any" placeholder="e.g. 3.5" required><label for="note">Description (optional)</label><input id="note" maxlength="80" placeholder="e.g. Kitchen lights / shower / leftovers"><button class="primary full" type="submit">Save entry +</button><p id="log-message" class="feedback" role="status"></p></form></article>
+<article class="panel"><h3>Set a weekly usage target</h3><p class="muted">Targets are personal goals, not universal recommendations.</p><form id="target-form"><label for="target-resource">Resource</label><select id="target-resource"><option value="energy">⚡ Electricity (kWh)</option><option value="water">💧 Water (L)</option><option value="food">🥗 Food waste (kg)</option></select><label for="target-amount">Weekly maximum</label><input id="target-amount" type="number" min="0.01" max="100000" step="any" required placeholder="e.g. 50"><button class="secondary full" type="submit">Update target</button><p id="target-message" class="feedback" role="status"></p></form><div id="target-progress"></div></article></div>
+<article class="panel"><div class="panel-head"><h3>Usage history</h3><button id="export" class="text-button">Export CSV ↓</button></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Resource</th><th>Amount</th><th>Note</th><th></th></tr></thead><tbody id="history"></tbody></table></div></article></section>
+<section id="city" class="view"><div class="section-intro"><h2>EcoCity: the decision lab</h2><p>Run a fictional city through five decisions. See how sustainability choices affect resources, wellbeing and your budget. This is an educational simulation, not a scientific prediction.</p></div><div class="city-layout"><article class="panel city-scene"><div class="city-sky">☀️ <span>☁️</span></div><div class="buildings">🏡 🏢 🌳 🏫 🌲 🏭</div><div class="city-ground"></div><div class="city-score"><span>CITY HEALTH</span><strong id="city-health">60</strong><small>/ 100</small></div><div class="meters"><div><span>💧 Water</span><b id="city-water">60</b></div><div><span>⚡ Energy</span><b id="city-energy">60</b></div><div><span>🙂 Wellbeing</span><b id="city-wellbeing">60</b></div><div><span>💰 Budget</span><b id="city-budget">60</b></div></div></article><article class="panel"><span class="eyebrow" id="round-label">DECISION 1 OF 5</span><h3 id="scenario-title"></h3><p id="scenario-description" class="scenario-desc"></p><div id="choices" class="choices"></div><div id="decision-feedback" class="decision-feedback" role="status"></div><button id="restart-city" class="secondary full" hidden>↻ Restart simulation</button></article></div></section>
+<section id="rewards" class="view"><div class="section-intro"><h2>EcoRewards — Recycle. Earn. Repeat.</h2><p>Record eco-friendly activities and collect demonstration points. <b>This is a tech fest simulation: no real money is paid, and activities are not independently verified.</b></p></div>
+<div class="stats"><article class="stat accent"><span>AVAILABLE ECOPOINTS</span><strong id="wallet-points">0</strong><p>Demo balance</p></article><article class="stat"><span>DEMO CASH EQUIVALENT</span><strong id="wallet-value">AED 0</strong><p>300 points = AED 5</p></article><article class="stat"><span>REWARDS REDEEMED</span><strong id="wallet-redeemed">0</strong><p>Demo vouchers claimed</p></article><article class="stat"><span>RECORDED ACTIVITIES</span><strong id="wallet-actions">0</strong><p>Self-reported entries</p></article></div>
+<div class="two-col"><article class="panel"><h3>Record a green action</h3><form id="reward-form"><label for="reward-action">Choose activity</label><select id="reward-action"><option value="bottle">♻️ Recycle 1 plastic bottle — 10 pts</option><option value="can">🥫 Recycle 1 aluminium can — 15 pts</option><option value="paper">📄 Recycle 1 kg paper — 30 pts</option><option value="cardboard">📦 Recycle 1 kg cardboard — 25 pts</option><option value="plastic">♻️ Recycle 1 kg plastic — 50 pts</option><option value="reuse">🥤 Reuse a container — 10 pts</option><option value="water">💧 Complete water-saving action — 20 pts</option><option value="power">⚡ Complete energy-saving action — 20 pts</option></select><label for="reward-quantity">Quantity (1–10)</label><input id="reward-quantity" type="number" value="1" min="1" max="10" step="1" required><button class="primary full" type="submit">Add EcoPoints +</button></form><p id="reward-message" class="feedback" role="status"></p><p class="muted tiny">For an actual cash program, recycling must be verified and funded by a sponsor. These points are only for demonstration.</p></article>
+<article class="panel"><h3>Redeem your points</h3><p class="muted">Earn 300 points to unlock a simulated AED 5 voucher.</p><div class="reward-ticket"><span>ECOPULSE DEMO VOUCHER</span><h2>AED 5</h2><p>Costs 300 EcoPoints</p></div><button id="redeem-reward" class="secondary full">Redeem 300 points (demo)</button><p id="redeem-message" class="feedback" role="status"></p><button id="reset-rewards" class="text-button">Reset demo wallet</button></article></div>
+<article class="panel"><h3>Recent reward activity</h3><div id="reward-history" class="activity"></div></article></section>
+<section id="quests" class="view"><div class="section-intro"><h2>Make sustainability a habit.</h2><p>Complete real-life challenges and check them off yourself. EcoPoints are motivational only; they do not measure verified environmental impact.</p></div><div class="quest-banner"><div><span class="eyebrow light">YOUR PROGRESS</span><h2><span id="quest-points">0</span> EcoPoints</h2><p id="quest-count">0 of 6 challenges completed</p></div><div class="quest-badge">🏆</div></div><div id="quest-list" class="quest-grid"></div></section>
+<section id="about" class="view"><div class="section-intro"><h2>Built for a world with less waste.</h2><p>A student-friendly prototype that combines data logging, personal targets, and decision-based learning.</p></div><div class="two-col"><article class="panel"><h3>🎯 The problem</h3><p>Electricity, water and food can be wasted when we don't notice our daily habits. EcoPulse makes those habits visible and gives users a place to reflect and improve.</p><h3>🧪 How it works</h3><p>All records are entered by the user and saved locally using browser localStorage. The simulator uses illustrative scores rather than real-world engineering models.</p></article><article class="panel"><h3>🌐 Sustainable Development Goals</h3><p><b>SDG 12</b> — Responsible Consumption and Production (primary)</p><p><b>SDG 6</b> — Clean Water and Sanitation</p><p><b>SDG 7</b> — Affordable and Clean Energy</p><p><b>SDG 13</b> — Climate Action</p><button id="reset-data" class="danger">Clear all my saved data</button><p id="reset-message" role="status" class="feedback"></p></article></div></section>
+<footer>ECOPULSE <span>✳</span> BUILD MORE. WASTE LESS. &nbsp; · &nbsp; Made for learning and positive action.</footer>
+</main></div><script src="app.js" defer></script><script src="rewards.js" defer></script></body></html>
